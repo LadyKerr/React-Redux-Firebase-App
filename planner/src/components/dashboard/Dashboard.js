@@ -7,7 +7,7 @@ import { compose } from "redux";
 
 class Dashboard extends React.Component {
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const projects = this.props.projects;
     console.log(projects);
 
@@ -29,7 +29,7 @@ class Dashboard extends React.Component {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    projects: state.projectReducer.projects
+    projects: state.firestoreReducer.ordered.projects
   };
 };
 
