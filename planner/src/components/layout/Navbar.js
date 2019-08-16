@@ -4,22 +4,23 @@ import SignedInLinks from "./SignedInLinks";
 import SignedOutLinks from "./SignedOutLinks";
 import { connect } from "react-redux";
 
-const NavBar = () => {
+const NavBar = props => {
+  const auth = props.auth;
+  const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />; //conditionally render signin/signout view
+
   return (
     <nav className="nav-wrapper purple lighten-3">
       <div className="container">
         <Link to="/" className="brand-logo">
           TaylorPlan
         </Link>
-        <SignedInLinks />
-        <SignedOutLinks />
+        {links}
       </div>
     </nav>
   );
 };
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     auth: state.firebaseReducer.auth
   };
