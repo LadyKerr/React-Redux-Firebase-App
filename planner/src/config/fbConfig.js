@@ -4,16 +4,16 @@ import "firebase/auth";
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIRESTORE_API_KEY,
-  authDomain: process.env.REACT_APP_FIRESTORE_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_FIRESTORE_DB_URL,
+  apiKey: "AIzaSyDgz5ie3PpGNkSQE-Z37kZmurRzAkAVF2I",
+  authDomain: "taylor-planner.firebaseapp.com",
+  databaseURL: "https://taylor-planner.firebaseio.com",
   projectId: "taylor-planner",
   storageBucket: "",
-  messagingSenderId: process.env.REACT_APP_FIRESTORE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIRESTORE_APP_ID
+  messagingSenderId: "760173495179",
+  appId: "1:760173495179:web:9e00e2953053f1e9"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-firebase.firestore().settings({ timestampsInSnapshots: true });
+firebase.firestore();
 
 export default firebase;
