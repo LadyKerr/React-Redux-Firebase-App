@@ -33,6 +33,23 @@ exports.projectCreated = functions.firestore
     return this.createNotification(notification); //notification will be added to the notification collection in firestore and log message to the console.
   });
 
-  
+//when a new user joined, we want to tap into the auth service to trigger the function when a user is created
+//
+exports.userJoined = functions.auth.user().onCreate(user => {
+  return admin
+    .firestore()
+    .collection("users") //ref user collection
+    .doc(user.uid) //referencing the new user id when they sign up from the doc
+    .get()
+    .then(userDoc => {
+      const newUser = userDoc.data(); //now we have access to the new user info
+      const notification = {
+        content: "Joined the party",
+        user: `${newUser.firstName} ${newUser.lastName}`,
+        time: admin.firestore.FieldValue.serverTimestamp()
+      };
+      return this.createNotification(notification);
+    });
+});
 
 //once deployed the function will run on request via the specific url (its like an endpoint for the function)
