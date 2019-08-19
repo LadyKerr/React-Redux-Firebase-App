@@ -43,7 +43,7 @@ const mapStateToProps = state => {
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    { collection: "projects" },
-    { collection: "notifications", limit: 3 } //we connect to the notifications collection to get the # of notifications to display! amazing! =)
+    { collection: "projects", orderBy: ["createdAt", "desc"] },
+    { collection: "notifications", limit: 3, orderBy: ["time", "desc"] } //we connect to the notifications collection to get the # of notifications to display! amazing! =)
   ]) //when the component is loaded, we want to find the projects collection in db; actively listening
 )(Dashboard);
